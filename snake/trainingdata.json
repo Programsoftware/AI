@@ -1,0 +1,225 @@
+[{  
+   "snakee.distanceFromAppleX":5,
+   "snakee.distanceFromAppleY":6,
+   "snakee.distanceFroNextWall":15,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":5,
+   "snakee.distanceFromAppleY":0,
+   "snakee.distanceFroNextWall":10,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"left"
+},
+{  
+   "snakee.distanceFromAppleX":16,
+   "snakee.distanceFromAppleY":8,
+   "snakee.distanceFroNextWall":7,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"up"
+},
+{  
+   "snakee.distanceFromAppleX":16,
+   "snakee.distanceFromAppleY":0,
+   "snakee.distanceFroNextWall":2,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":0,
+   "snakee.distanceFromAppleY":0,
+   "snakee.distanceFroNextWall":7,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":5,
+   "snakee.distanceFromAppleY":0,
+   "snakee.distanceFroNextWall":5,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":27,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":1,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"up"
+},
+{  
+   "snakee.distanceFromAppleX":27,
+   "snakee.distanceFromAppleY":8,
+   "snakee.distanceFroNextWall":8,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"left"
+},
+{  
+   "snakee.distanceFromAppleX":18,
+   "snakee.distanceFromAppleY":8,
+   "snakee.distanceFroNextWall":20,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":4,
+   "snakee.distanceFromAppleY":0,
+   "snakee.distanceFroNextWall":10,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":7,
+   "snakee.distanceFroNextWall":11,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":4,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":4,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":6,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":4,
+   "snakee.distanceFromAppleY":0,
+   "snakee.distanceFroNextWall":3,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"left"
+},
+{  
+   "snakee.distanceFromAppleX":0,
+   "snakee.distanceFromAppleY":2,
+   "snakee.distanceFroNextWall":8,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"up"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":5,
+   "snakee.distanceFroNextWall":11,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"left"
+},
+{  
+   "snakee.distanceFromAppleX":0,
+   "snakee.distanceFromAppleY":5,
+   "snakee.distanceFroNextWall":7,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":0,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":5,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":4,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":19,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":4,
+   "snakee.distanceFromAppleY":0,
+   "snakee.distanceFroNextWall":4,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"left"
+},
+{  
+   "snakee.distanceFromAppleX":0,
+   "snakee.distanceFromAppleY":9,
+   "snakee.distanceFroNextWall":5,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"up"
+},
+{  
+   "snakee.distanceFromAppleX":2,
+   "snakee.distanceFromAppleY":2,
+   "snakee.distanceFroNextWall":6,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":2,
+   "snakee.distanceFroNextWall":24,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"up"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":3,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":5,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":18,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":5,
+   "snakee.distanceFromAppleY":0,
+   "snakee.distanceFroNextWall":16,
+   "snakee.distanceFroNextTail":"undefined",
+   "newDirection":"left"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":11,
+   "snakee.distanceFroNextWall":6,
+   "snakee.distanceFroNextTail":5,
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":3,
+   "snakee.distanceFroNextWall":8,
+   "snakee.distanceFroNextTail":5,
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":3,
+   "snakee.distanceFroNextWall":8,
+   "snakee.distanceFroNextTail":5,
+   "newDirection":"down"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":4,
+   "snakee.distanceFroNextTail":5,
+   "newDirection":"right"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":22,
+   "snakee.distanceFroNextTail":5,
+   "newDirection":"up"
+},
+{  
+   "snakee.distanceFromAppleX":1,
+   "snakee.distanceFromAppleY":1,
+   "snakee.distanceFroNextWall":14,
+   "snakee.distanceFroNextTail":5,
+   "newDirection":"left"
+}
+]
