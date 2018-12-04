@@ -11,81 +11,10 @@ window.onload = function() {
     var score;
     var timeron = false;
     var newDirection;
-    var trainingData;
-    writedataStart()
+    var trainingData = [];
+    var timerTime=0;
     init();
-    function AI(){
-        //converting our data (inputs (one flat array), outputs(4 arrays))
-        const inputData = tf.tensor2d([snakee.distanceFromAppleX, snakee.distanceFromAppleY, snakee.distanceFromNextWall, snakee.distanceFromTail], [1,4]);
-        const outputData = tf.tensor2d(['up', 'down', 'right', 'left'], [1,4]);
-        
-        const model = tf.sequential();
-        model.add(tf.layers.dense({
-            inputShape: [4],
-            activation: "relu",
-            units: 5,
-        }
-        ));
-        model.add(tf.layers.dense({
-            inputShape: [5],
-            activation: "relu",
-            units: 4,
-        }
-        ));
-        model.add(tf.layers.dense({
-            inputShape: [4],
-            activation: "relu",
-            units: 4,
-        }
-        ));
-        model.compile({
-            loss: "meanSquaredError",
-            optimizer: tf.train.adam(.06),
-        })
-        //training
-        model.fit(inputData, outputData, {epochs:10})
-            .then((history) => {
-                model.predict(inputData).print();
-            });
-        //testing
-    };
-            
-        
 
-
-    //function writedataStart(){
-           // var textFile = null,
-           // makeTextFile = function (text) {
-            //var data = new Blob([text], {type: 'text/plain'});
-        
-            // If we are replacing a previously generated file we need to
-            // manually revoke the object URL to avoid memory leaks.
-          //  if (textFile !== null) {
-          //     window.URL.revokeObjectURL(textFile);
-        //    }
-        //
-        //    textFile = window.URL.createObjectURL(data);
-        //
-            // returns a URL you can use as a href
-           // return textFile;
-           // };
-            //create.addEventListener('click', function () {
-           //     var create = document.getElementById('create'),
-            //    textbox = trainingData;
-            //    var link = document.getElementById('downloadlink');
-          //      link.href = makeTextFile(textbox.value);
-            //    link.style.display = 'block';
-          //  }, false);
-  // }
-    //function writeData(){
-            //trainingData=trainingData+
-            //' {"snakee.distanceFromAppleX": '+snakee.distanceFromAppleX+
-            //', "snakee.distanceFromAppleY": ' +snakee.distanceFromAppleY+
-           // ', "snakee.distanceFroNextWall": ' + snakee.distanceFromNextWall+
-           // ', "snakee.distanceFroNextTail": ' + snakee.distanceFromTail+
-           // ', "newDirection": "' +newDirection+'"},';
-            //console.log(trainingData);
-   // };
     function init() {
         var canvas = document.createElement('canvas');
         canvas.width = canvasWidth;
@@ -99,20 +28,25 @@ window.onload = function() {
         snakee = new Snake([[6,4], [5,4], [4,4], [3, 4], [2, 4]], 'right');
         applee = new Apple([10, 10]);
         score = 0;
-        refreshCanvas();        
+        refreshCanvas();       
         
     }
 
     function refreshCanvas() {
+        timerTime++;
         timeron=true;
         snakee.advance();
-        snakee.getInput();
+        
         
 
         if (snakee.checkCollision()) {
             gameOver();
         }
         else {
+            storeAI(); 
+            if(timerTime>2){                   
+            trainAI();
+            };       
             if (snakee.isEatingApple(applee)) {
                 score++;
                 snakee.ateApple = true;
@@ -124,12 +58,77 @@ window.onload = function() {
             drawScore();
             snakee.draw();
             applee.draw();
-            AI();
             setTimeout(refreshCanvas,delay);            
         }
-        };
         
+    };
+
+    function trainAI(){
+        
+        const trainingDataTensor = tf.tensor2d(trainingData.map(item=>[item[0], item[1], item[2], item[3], item[4]]));
+        var outputArray=[];
+        for(var i = 0; i< trainingData.length; i++){
+            outputArray.push(trainingData[i][5]);
+        }
+        const outputData = tf.tensor2d(outputArray.map(item =>[
+            item === "top" ? 1 : 0,
+            item === "right" ? 1 : 0,
+            item === "left" ? 1 : 0,
+            item === "down" ? 1 : 0,             
+        ]));
+        snakee.getInput()
+        const testingData = tf.tensor2d([
+            snakee.distanceFromAppleX, snakee.distanceFromAppleY, snakee.distanceFromNextWall, snakee.distanceFromTail,newDirection
+          ], [1,5]);
+
+        const model = tf.sequential();
+
+        model.add(tf.layers.dense({
+            inputShape: [5],
+            activation: "linear",
+            units: 5,
+          }));
+          model.add(tf.layers.dense({
+            inputShape: [5],
+            activation: "linear",
+            units: 4,
+          }));
+          model.add(tf.layers.dense({
+            inputShape: [4],
+            activation: "linear",
+            units: 4,
+          }));
+          model.compile({
+            loss: "meanSquaredError",
+            optimizer: tf.train.adam(.06),
+          });
+          // train/fit our network
+          model.fit(trainingDataTensor, outputData, {epochs: 100})
+            .then((history) => {
+                console.log(history);
+              model.predict(testingData).print()
+            });
+    };
     
+    function AIMove(){ //returns direction the snake wants to go in        
+        snakee.getInput();
+        
+        a = Math.floor(Math.random()*4)+1;
+        if (a==1){            
+            newDirection='top';
+        }else if (a==2){
+            newDirection='right';
+        }else if(a==3){
+            newDirection='left';
+        }else if(a==4){
+            newDirection='down';
+        };
+
+    };
+    
+    function storeAI(){
+        trainingData.push(currentData);
+    }
 
     function gameOver() {
         ctx.save();
@@ -200,9 +199,6 @@ window.onload = function() {
             }else{
                 this.distanceFromAppleY=applee.position[1]-snakeY;
             };
-    
-            
-            
             
             switch (this.direction) {
                 case 'left':
@@ -243,6 +239,8 @@ window.onload = function() {
                 default:
                     throw('invalid direction');
             }
+            currentData=[snakee.distanceFromAppleX, snakee.distanceFromAppleY, snakee.distanceFromNextWall, snakee.distanceFromTail,newDirection];
+
         };
 
         this.draw = function() {
@@ -254,7 +252,7 @@ window.onload = function() {
             ctx.restore();
         }
         this.advance = function() {
-            
+            AIMove();
             snakee.setDirection(newDirection);
             var nextPosition = this.body[0].slice(); //copie l'élément
             switch (this.direction) {
@@ -285,7 +283,7 @@ window.onload = function() {
             
         }
 
-        this.setDirection = function(newDirection) {
+        this.setDirection = function(wantedDirection) {
             var allowedDirections;
             switch (this.direction) {
             case 'left':
@@ -295,14 +293,14 @@ window.onload = function() {
 
             case 'down':
             case 'up':
-            allowedDirections = ['left', 'right'];
+                allowedDirections = ['left', 'right'];
                 break;
 
             default:
                 throw('invalid direction');
             }
-            if (allowedDirections.indexOf(newDirection) > -1) {
-                this.direction = newDirection;
+            if (allowedDirections.indexOf(wantedDirection) > -1) {
+                this.direction = wantedDirection;
             }
         }
 
@@ -374,28 +372,23 @@ window.onload = function() {
 
 
 
-
     document.onkeydown = function handleKeyDown(e) {
         var key = e.keyCode;
         switch (key) {
             case 37:
                 newDirection = 'left';
-               // writeData();
                 break;
 
             case 38:
                 newDirection = 'up';
-                //writeData();
                 break;
 
             case 39:
                 newDirection = 'right';
-                //writeData();
                 break;
 
             case 40:
                 newDirection = 'down';
-                //writeData();
                 break;
             case 32:
                 restart();
